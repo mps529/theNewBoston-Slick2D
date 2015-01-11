@@ -9,29 +9,34 @@ import org.newdawn.slick.state.*;
  */
 public class Menu extends BasicGameState {
 
-    public String mouse = "No Input Yet!";
+
+
     public Menu(int state){
 
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
+
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+       g.fillOval(75, 100, 100, 100);
+       g.drawString("Play Now!", 80, 70);
 
-        Image playNow = new Image("slickTutorial/res/playNow.png");
-
-        g.drawString(mouse, 50, 50);
-        g.drawRect(50, 100, 60, 120); //x, y, width, height
-        g.drawImage(playNow, 200, 130);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-        int xpos = Mouse.getX();
-        int ypos = Mouse.getY();
+        Input input = gc.getInput();
+        int xPos = Mouse.getX();
+        int yPos = Mouse.getY();
+        if((xPos >75 && xPos <175)&&(yPos >160 && yPos <260)){
+            if(input.isMouseButtonDown(0)) {
+                sbg.enterState(1);
+            }
 
-        mouse = "Mouse position: "+xpos+", "+ypos;
+        }
+
 
     }
 
