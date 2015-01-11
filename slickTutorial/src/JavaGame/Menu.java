@@ -1,5 +1,6 @@
 package JavaGame;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
@@ -8,6 +9,7 @@ import org.newdawn.slick.state.*;
  */
 public class Menu extends BasicGameState {
 
+    public String mouse = "No Input Yet!";
     public Menu(int state){
 
     }
@@ -20,12 +22,16 @@ public class Menu extends BasicGameState {
 
         Image playNow = new Image("slickTutorial/res/playNow.png");
 
-        g.drawString("Are you ready to juice some boys?!", 50, 50);
+        g.drawString(mouse, 50, 50);
         g.drawRect(50, 100, 60, 120); //x, y, width, height
         g.drawImage(playNow, 200, 130);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        int xpos = Mouse.getX();
+        int ypos = Mouse.getY();
+
+        mouse = "Mouse position: "+xpos+", "+ypos;
 
     }
 
